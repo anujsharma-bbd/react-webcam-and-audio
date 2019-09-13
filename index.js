@@ -4,6 +4,7 @@ import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
+  imageRefs = [];
   constructor() {
     super();
     this.state = { start: false, isError: false, isLoading: false };
@@ -11,6 +12,8 @@ class App extends Component {
     this.stop = this.stop.bind(this);
     this.pause = this.pause.bind(this);
     this.TakePhoto = this.TakePhoto.bind(this);
+    this.setRef = this.setRef.bind(this);
+    this.remove = this.remove.bind(this);
     this.player = React.createRef();
     this.canvas = React.createRef();
     this.image = React.createRef();
@@ -31,6 +34,12 @@ class App extends Component {
           this.setState({ isError: true, errorMessage: err });
         })
     }
+  }
+  setRef(ref) {
+    this.imageRefs.push(ref);
+  };
+  remove(ref) {
+
   }
   TakePhoto() {
 
@@ -82,8 +91,14 @@ class App extends Component {
           ></video>
         </p>
         <p>
+          {
+            this.imageRefs.map(image =>
+              <img ref={this.setRef} key={image} width='320' height='240' alt='' />
+            )
+          }
+        </p>
+        <p>
           <canvas style={{ display: 'none' }} ref={x => this.canvas = x} id='canvas' width='320' height='240'></canvas>
-          <img ref={x => this.image = x} id='image' width='320' height='240' alt='' />
         </p>
       </div >
     );
