@@ -16,3 +16,22 @@ h1, p {
   border-radius: 6px;
     box-shadow: 7px 8px #adad;
 }
+.context-menu{
+    width: 150px;
+    background-color: #fff;
+    color: #000;
+    line-height: 25px;
+    opacity: 1;
+    border-radius: 6px;
+
+}
+.context-menu .item{
+  line-height: 25px;
+  cursor: pointer;
+}
+.context-menu .item:hover{
+  background-color: #ccc;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 25px;
+}
